@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Study Planner</title>
+
+    <link rel="stylesheet" href="studentstyle.css">
+
+</head>
+
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🎓 StudyMate</h2>
+
+        <nav>
+    <a href="student-study-planner.html">🏠 Home</a>
+    <a href="student-subject.html">📚 Subjects</a>
+    <a href="student-schedule.html">📅 Schedule</a>
+    <a href="student-task.html">✅ Tasks</a>
+    <a href="student-timer.html">⏱️ Focus Mode</a>
+    <a href="student-progress.html">📈 Analytics</a>
+    <a href="student-goals.html">🎯 Goals</a>
+</nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+
+                <h1>Good Afternoon! 👋</h1>
+
+                <p>Ready to study today?</p>
+
+            </div>
+
+            <button id="themeBtn">🌙</button>
+
+        </header>
+
+
+        <!-- Statistics -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <h3>📚</h3>
+
+                <h2 id="subjectCount">0</h2>
+
+                <p>Subjects</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>✅</h3>
+
+                <h2 id="completedCount">0</h2>
+
+                <p>Completed</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>🎯</h3>
+
+                <h2 id="progress">0%</h2>
+
+                <p>Progress</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Add Task -->
+
+        <section class="task-section">
+
+            <div class="section-header">
+
+                <h2>Today's Tasks</h2>
+
+                <button id="addTaskBtn">
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <!-- Task Form -->
+
+            <div id="taskForm" class="task-form">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Enter study task"
+                >
+
+
+                <input
+                    type="text"
+                    id="subjectInput"
+                    placeholder="Subject"
+                >
+
+
+                <input
+                    type="time"
+                    id="timeInput"
+                >
+
+
+                <button id="saveTaskBtn">
+                    Add Task
+                </button>
+
+            </div>
+
+
+            <!-- Task List -->
+
+            <div id="taskList">
+
+                <!-- Tasks will appear here -->
+
+            </div>
+
+        </section>
+
+
+        <!-- Study Timer -->
+
+        <section class="timer-section">
+
+            <h2>⏱️ Study Timer</h2>
+
+            <div id="timer">
+                25:00
+            </div>
+
+
+            <div class="timer-buttons">
+
+                <button id="startBtn">
+                    Start
+                </button>
+
+                <button id="resetBtn">
+                    Reset
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="studentscript.js"></script>
+
+</body>
+
+</html>
+
