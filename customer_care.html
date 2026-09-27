@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Customer Support</title>
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <!-- Header -->
+        <div class="chat-header">
+
+            <div class="bot-info">
+                <div class="bot-icon">🤖</div>
+
+                <div>
+                    <h2>AI Support</h2>
+                    <p>● Online</p>
+                </div>
+            </div>
+
+            <button id="clearBtn">🗑️</button>
+
+        </div>
+
+
+        <!-- Chat Messages -->
+        <div class="chat-body" id="chatBody">
+
+            <div class="message bot-message">
+                <div class="avatar">🤖</div>
+
+                <div class="message-content">
+                    <p>
+                        Hello! 👋 I'm your AI Customer Support Assistant.
+                        How can I help you today?
+                    </p>
+
+                    <span class="time">Now</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Quick Questions -->
+        <div class="quick-replies">
+
+            <button onclick="quickMessage('What are your services?')">
+                Services
+            </button>
+
+            <button onclick="quickMessage('How can I contact support?')">
+                Contact Support
+            </button>
+
+            <button onclick="quickMessage('What are your working hours?')">
+                Working Hours
+            </button>
+
+        </div>
+
+
+        <!-- Input Area -->
+        <div class="chat-input" id="chatBody">
+            </div>
+
+            <div class="chat-input">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type your message..."
+               
+            >
+
+            <button id="sendBtn">
+               ➤
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
