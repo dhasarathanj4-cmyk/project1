@@ -1,0 +1,270 @@
+alert("JavaScript is working!");
+const messageInput = document.getElementById("messageInput");
+const sendBtn = document.getElementById("sendBtn");
+const chatBody = document.getElementById("chatBody");
+const clearBtn = document.getElementById("clearBtn");
+
+
+// ===============================
+// SEND MESSAGE
+// ===============================
+
+sendBtn.addEventListener("click", sendMessage);
+
+
+// Send message when pressing Enter
+messageInput.addEventListener("keydown", function (event) {
+
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+
+});
+
+
+// ===============================
+// SEND MESSAGE FUNCTION
+// ===============================
+
+function sendMessage() {
+
+    const message = messageInput.value.trim();
+
+    // Don't send empty message
+    if (message === "") {
+        return;
+    }
+
+    // Add user message
+    addMessage(message, "user");
+
+    // Clear input
+    messageInput.value = "";
+
+    // Show typing animation
+    showTyping();
+
+    // Give AI response after 1 second
+    setTimeout(function () {
+
+        removeTyping();
+
+        const response = getAIResponse(message);
+
+        addMessage(response, "bot");
+
+    }, 1000);
+}
+
+
+// ===============================
+// ADD MESSAGE
+// ===============================
+
+function addMessage(message, sender) {
+
+    const messageDiv = document.createElement("div");
+
+    messageDiv.classList.add("message");
+
+    if (sender === "user") {
+
+        messageDiv.classList.add("user-message");
+
+        messageDiv.innerHTML =
+            '<div class="message-content">' +
+                '<p>' + message + '</p>' +
+                '<span class="time">' + getTime() + '</span>' +
+            '</div>';
+
+    } else {
+
+        messageDiv.classList.add("bot-message");
+
+        messageDiv.innerHTML =
+            '<div class="avatar">🤖</div>' +
+            '<div class="message-content">' +
+                '<p>' + message + '</p>' +
+                '<span class="time">' + getTime() + '</span>' +
+            '</div>';
+    }
+
+    chatBody.appendChild(messageDiv);
+
+    // Automatically scroll to latest message
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+
+// ===============================
+// AI RESPONSE
+// ===============================
+
+function getAIResponse(message) {
+
+    const text = message.toLowerCase();
+
+
+    // Hello
+    if (
+        text.includes("hello") ||
+        text.includes("hi") ||
+        text.includes("hey")
+    ) {
+        return "Hello! 👋 How can I help you today?";
+    }
+
+
+    // Services
+    if (
+        text.includes("service") ||
+        text.includes("services")
+    ) {
+        return "We provide website development, software solutions and customer support services. 💻";
+    }
+
+
+    // Contact
+    if (
+        text.includes("contact") ||
+        text.includes("support")
+    ) {
+        return "You can contact our support team through email or phone. 📞";
+    }
+
+
+    // Working hours
+    if (
+        text.includes("working") ||
+        text.includes("hours")
+    ) {
+        return "Our customer support is available Monday to Saturday, 9 AM to 6 PM. 🕘";
+    }
+
+
+    // Price
+    if (
+        text.includes("price") ||
+        text.includes("cost")
+    ) {
+        return "Our pricing depends on the service you choose. Please tell me which service you are interested in.";
+    }
+
+
+    // Thanks
+    if (
+        text.includes("thank") ||
+        text.includes("thanks")
+    ) {
+        return "You're welcome! 😊 I'm happy to help.";
+    }
+
+
+    // Bye
+    if (
+        text.includes("bye") ||
+        text.includes("goodbye")
+    ) {
+        return "Goodbye! 👋 Have a great day!";
+    }
+
+
+    // Default response
+    return "I'm still learning 🤖. Could you please ask your question in a different way?";
+}
+
+
+// ===============================
+// QUICK MESSAGE
+// ===============================
+
+function quickMessage(message) {
+
+    messageInput.value = message;
+
+    sendMessage();
+}
+
+
+// ===============================
+// TYPING ANIMATION
+// ===============================
+
+function showTyping() {
+
+    const typingDiv = document.createElement("div");
+
+    typingDiv.classList.add("message");
+    typingDiv.id = "typing";
+
+
+    typingDiv.innerHTML =
+        '<div class="avatar">🤖</div>' +
+        '<div class="typing">' +
+            '<span></span>' +
+            '<span></span>' +
+            '<span></span>' +
+        '</div>';
+
+
+    chatBody.appendChild(typingDiv);
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+
+// ===============================
+// REMOVE TYPING ANIMATION
+// ===============================
+
+function removeTyping() {
+
+    const typing = document.getElementById("typing");
+
+    if (typing !== null) {
+        typing.remove();
+    }
+}
+
+
+// ===============================
+// GET CURRENT TIME
+// ===============================
+
+function getTime() {
+
+    const now = new Date();
+
+    return now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+}
+
+
+// ===============================
+// CLEAR CHAT
+// ===============================
+
+clearBtn.addEventListener("click", function () {
+
+    chatBody.innerHTML =
+        '<div class="message bot-message">' +
+
+            '<div class="avatar">🤖</div>' +
+
+            '<div class="message-content">' +
+
+                '<p>' +
+                    "Hello! 👋 I'm your AI Customer Support Assistant. " +
+                    "How can I help you today?" +
+                '</p>' +
+
+                '<span class="time">Now</span>' +
+
+            '</div>' +
+
+        '</div>';
+
+});
+
